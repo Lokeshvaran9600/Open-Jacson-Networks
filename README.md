@@ -1,4 +1,6 @@
-# Series Queues with infinite capacity - Open Jackson Network
+                                                          #NAME:LOKESHVARAN S
+                                                          #REG NO:212223040105
+# EX-6Series Queues with infinite capacity - Open Jackson Network
 
 ## Aim :
 To find (a) average number of materials in the system (b) average number of materials in the each conveyor of (c) waiting time of each material in the system (d) waiting time of each material in each conveyor, if the arrival  of materials follow Poisson process with the mean interval time 12 seconds, service time of  lathe machine in series follow exponential distribution  with service time  1 second, 1.5 seconds and 1.3 seconds respectively and average service time of robot is 7 seconds.
@@ -17,11 +19,55 @@ Visual components and Python
 
 
 ## Experiment:
+![239798222-8174c246-d4fb-4c73-8ecc-48bed11c80fb](https://github.com/Lokeshvaran9600/Open-Jacson-Networks/assets/145972263/3284d711-d952-43aa-a512-b480f1fa640c)
+![239798222-8174c246-d4fb-4c73-8ecc-48bed11c80fb](https://github.com/Lokeshvaran9600/Open-Jacson-Networks/assets/145972263/ce4c85ae-37d6-4a10-81f1-afaedddfd7a7)
+![239798242-0ef077a1-29ac-4a7d-af4d-ee190017819a](https://github.com/Lokeshvaran9600/Open-Jacson-Networks/assets/145972263/4af8b903-4dac-464c-8ece-6f9a3ef7df15)
+![239798242-0ef077a1-29ac-4a7d-af4d-ee190017819a](https://github.com/Lokeshvaran9600/Open-Jacson-Networks/assets/145972263/60151f3e-266c-47a2-9971-8b12476c775a)
+
+
 
 
 ## Program
 
-
+```
+arr_time=float(input("Enter the mean inter arrival time of objects from Feeder (in secs): "))
+ser_time1=float(input("Enter the mean  inter service time of Lathe Machine 1 (in secs) :  "))
+ser_time2=float(input("Enter the mean  inter service time of Lathe Machine 2 (in secs) :  "))
+ser_time3=float(input("Enter the mean  inter service time of Lathe Machine 3 (in secs) :  "))
+Robot_time=float(input("Enter the Additional time taken for the Robot (in secs) :  "))
+lam=1/arr_time
+mu1=1/(ser_time1+Robot_time)
+mu2=1/(ser_time2+Robot_time)
+mu3=1/(ser_time3+Robot_time)
+print("-----------------------------------------------------------------------")
+print("Series Queues with infinite capacity- Open Jackson Network")
+print("-----------------------------------------------------------------------")
+if (lam <  mu1) and (lam <  mu2) and (lam <  mu3):
+    Ls1=lam/(mu1-lam)
+    Ls2=lam/(mu2-lam)
+    Ls3=lam/(mu3-lam)
+    Ls=Ls1+Ls2+Ls3
+    Lq1=Ls1-lam/mu1
+    Lq2=Ls2-lam/mu2
+    Lq3=Ls3-lam/mu3
+    Wq1=Lq1/lam
+    Wq2=Lq2/lam
+    Wq3=Lq3/lam
+    Ws=Ls/(3*lam)
+    print("Average number of objects in the system S1 : %0.2f "%Ls1)
+    print("Average number of objects in the system S2 : %0.2f "%Ls2)
+    print("Average number of objects in the system S3 : %0.2f "%Ls3)
+    print("Average number of objects in the overall system    : %0.2f "%Ls)
+    print("Average number of objects in the conveyor S1  :  %0.2f "%Lq1)
+    print("Average number of objects in the conveyor S2  :  %0.2f "%Lq2)
+    print("Average number of objects in the conveyor S3  :  %0.2f "%Lq3)
+    print("Average waiting time of an object in the conveyor S1 : %0.2f secs"%Wq1)
+    print("Average waiting time of an object in the conveyor S2 : %0.2f secs"%Wq2)
+    print("Average waiting time of an object in the conveyor S3 : %0.2f secs"%Wq3)
+else:
+    print("Warning! Objects Over flow will happen in the conveyor")
+print("----------------------------------------------------------------------")
+```
 ## Output
 
 ## Result
